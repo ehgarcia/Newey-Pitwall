@@ -1,2 +1,4 @@
 aio-pika>=9.4
 rich>=13.7
+psycopg[binary,pool]>=3.1      # pool integrado
+python-dotenv>=1.0             # opcional, para .env
