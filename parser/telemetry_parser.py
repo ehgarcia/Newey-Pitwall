@@ -105,10 +105,13 @@ async def main():
                 if pending >= BATCH:
                     await flush(pool, rows)
                     rows.clear(); pending = 0
+    except (asyncio.CancelledError, KeyboardInterrupt):
+        print("⏹️  Cancelado por el usuario, cerrando…")
     finally:
-        await flush(pool, rows)
-        await pool.close(); await rconn.close()
-        print("👋  Parser detenido.")
+        await flush(pool, rows)          # inserta lote final
+        await pool.close()
+        await rconn.close()
+        print("👋  Parser detenido sin errores.")
 
 # ── Virtual test --------------------------------------------------------
 def _virtual_test():
