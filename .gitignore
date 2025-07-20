@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+.env
+.vscode/
+*.idea/
+
+# archivos de configuración local
+.env
